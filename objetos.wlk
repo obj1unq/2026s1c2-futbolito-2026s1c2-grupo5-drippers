@@ -24,6 +24,13 @@ object lionel {
 				position.y()
 			)
 	}
+
+	method taquito() {
+		if (pelota.estaEnLaPosicionDe(self)){
+			pelota.patearHaciaIzquierda(2)
+		}
+		
+	}
 }
 
 
@@ -46,4 +53,11 @@ object pelota {
 			position = position.down(1)
 		})
 	}
+
+	method patearHaciaIzquierda(distancia){
+
+		const nuevaX = 0.max(position.x() - distancia)
+        position = game.at(nuevaX, position.y())
+	}	
 }
+

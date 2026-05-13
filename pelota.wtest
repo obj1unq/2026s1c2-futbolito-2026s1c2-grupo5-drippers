@@ -10,7 +10,7 @@ describe "Pelota - patear" {
         lionel.avanzar()
         lionel.avanzar()
         assert.equals(game.at(5,5), lionel.position())
-        pelota.patear()
+        lionel.patear()
         assert.equals(game.at(8,5), pelota.position())
     }
 }
