@@ -1,0 +1,9 @@
+import objetos.*
+
+describe "Taquito"{
+
+    test "taquito con espacio a la izquierda y sin"{
+
+        
+    }
+}
