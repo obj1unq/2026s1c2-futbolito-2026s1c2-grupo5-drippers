@@ -1,0 +1,24 @@
+import objetos.*
+
+describe "Taquito"{
+
+    method initialize(){
+        game.width(15)
+        game.height(10)
+    }
+    test "taquito"{
+        
+        assert.equals(game.at(3,5), lionel.position())
+        lionel.avanzar()
+        lionel.avanzar()
+        assert.equals(game.at(5,5), lionel.position())
+
+
+        assert.equals(game.at(5,5), pelota.position())
+        lionel.taquito()
+        assert.equals(game.at(3,5), pelota.position())
+
+
+    }
+
+}

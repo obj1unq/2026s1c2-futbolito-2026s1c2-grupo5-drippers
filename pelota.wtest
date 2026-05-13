@@ -1,0 +1,16 @@
+import objetos.*
+
+describe "Pelota - patear" {
+
+    method initialize() {
+        game.width(15)
+	    game.height(10)
+    }
+	test "la pelota se mueve 3 casilleros a la derecha cuando Lionel la patea" {
+        lionel.avanzar()
+        lionel.avanzar()
+        assert.equals(game.at(5,5), lionel.position())
+        lionel.patear()
+        assert.equals(game.at(8,5), pelota.position())
+    }
+}

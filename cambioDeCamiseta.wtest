@@ -1,0 +1,19 @@
+import objetos.*
+describe "test Camiseta" {
+  test "Cambiar camiseta estando fuera de la zona" {
+        lionel.position(game.at(1,5))
+        assert.equals("titular", lionel.camisetaActual())
+        assert.notEquals(0, lionel.position().x())
+        assert.throwsException({lionel.cambiarCamiseta()})
+        assert.equals("titular", lionel.camisetaActual())
+  }
+
+  test "Cambiar camiseta estando dentro de la zona"{
+    lionel.position(game.at(0,5))
+    assert.equals("titular", lionel.camisetaActual())
+    assert.equals(0, lionel.position().x())
+    lionel.cambiarCamiseta()
+    assert.equals("suplente", lionel.camisetaActual())
+  }
+
+}
