@@ -24,19 +24,18 @@ object lionel {
 	}
 
 	method patear() {
-		if (pelota.estaEnLaPosicionDe(self))
-			position = game.at(
-				(position.x() + 3).min(game.width() - 1),
+		pelota.validarPosicionDePelota()
+		pelota.position( game.at(
+			(position.x() + 3).min(game.width() - 1),
 				position.y()
-			)
+			))
 	}
 
 	method taquito() {
-		if (pelota.estaEnLaPosicionDe(self)){
-			pelota.patearHaciaIzquierda(2)
-		}
-		
+		pelota.validarPosicionDePelota()
+		pelota.patearHaciaIzquierda(2)
 	}
+		
 	method cambiarCamiseta() {
 		self.validarCambio()
 		if (camisetaActual == "titular"){
@@ -64,13 +63,18 @@ object pelota {
 	var property position = game.at(5,5)
 
 
-	method estaEnLaPosicionDe(jugador) {
-		return self.position() == jugador.position()
-	}
+	method validarPosicionDePelota() {
+
+        if (not(position == lionel.position())) {
+
+            self.error("la pelota no esta en la misma posicion que Lionel")
+        }
+
+    }
 
 	method elevarse() {
 	  
-		self.estaEnLaPosicionDe(lionel)
+		self.validarPosicionDePelota()
 		position = position.up(1)
 
 		game.schedule(2000, {
@@ -85,4 +89,3 @@ object pelota {
         position = game.at(nuevaX, position.y())
 	}	
 }
-
