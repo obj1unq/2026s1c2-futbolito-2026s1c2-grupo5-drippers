@@ -2,6 +2,10 @@ import objetos.*
 
 describe "Taquito"{
 
+    method initialize(){
+        game.width(15)
+        game.height(10)
+    }
     test "taquito"{
         
         assert.equals(game.at(3,5), lionel.position())
