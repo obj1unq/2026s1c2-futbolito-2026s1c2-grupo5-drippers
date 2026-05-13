@@ -16,6 +16,14 @@ object lionel {
 	method avanzar() {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
+
+	method patear() {
+		if (pelota.estaEnLaPosicionDe(self))
+			position = game.at(
+				(position.x() + 3).min(game.width() - 1),
+				position.y()
+			)
+	}
 }
 
 
@@ -24,15 +32,18 @@ object pelota {
 	var property position = game.at(5,5)
 
 
-	method patear() {
-		if (self.estaEnLaPosicionDe(lionel))
-			position = game.at(
-				(position.x() + 3).min(game.width() - 1),
-				position.y()
-			)
-	}
-
 	method estaEnLaPosicionDe(jugador) {
 		return self.position() == jugador.position()
+	}
+
+	method elevarse() {
+	  
+		self.estaEnLaPosicionDe(lionel)
+		position = position.up(1)
+
+		game.schedule(2000, {
+			
+			position = position.down(1)
+		})
 	}
 }

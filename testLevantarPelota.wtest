@@ -1,0 +1,33 @@
+import wollok.game.*
+import objetos.* 
+
+describe "Tests de levantar la pelota" {
+
+  method initialize() {
+    game.clear() 
+  }
+
+  test "subir la pelota si ambos estan en la misma posicion" {
+    
+    // pongo a los dos en la posicion inicial
+    const posicionInicial = game.at(3, 5)
+    lionel.position(posicionInicial)
+    pelota.position(posicionInicial)
+
+    pelota.elevarse() //ejecuto
+
+    assert.equals(posicionInicial.up(1), pelota.position()) //el eje Y debería ser inicial + 1
+  }
+
+  test "error si lionel esta lejos" {
+    
+    // los pongo en lugares distintos
+    pelota.position(game.at(5, 5))
+    lionel.position(game.at(1, 1))
+
+    assert.throwsExceptionWithMessage(
+        "la pelota no esta en la misma posicion que Lionel", 
+        { pelota.elevarse() } //debería fallar
+    )
+  }
+}
